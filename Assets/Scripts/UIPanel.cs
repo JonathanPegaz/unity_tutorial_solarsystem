@@ -11,9 +11,12 @@ public class UIPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameController.Instance.OnSpeedChanged += RefreshFromSpeed;
     }
-
+    
+    private void RefreshFromSpeed(float newSpeed){
+        this.speedLabel.text = "SPEED = " + newSpeed.ToString();
+    }
     // Update is called once per frame
     void Update()
     {

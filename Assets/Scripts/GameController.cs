@@ -4,9 +4,32 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance = null;
+    public delegate void SpeedEvent(float newSpeed);
+    public event SpeedEvent OnSpeedChanged;
 
-    public float Speed { get; set; }
+    private static GameController _instance;
+    public static GameController Instance
+    {
+        get {
+            if(_instance == null)
+                _instance = FindObjectOfType<GameController>();
+            return _instance;
+        }
+        private set {
+            _instance = value;
+        }
+    }
+
+    private float _speed = 1;
+    public float Speed { get => _speed; 
+    set 
+    {
+        if(this.OnSpeedChanged != null) {
+            this.OnSpeedChanged.Invoke(value);
+        }
+        this._speed = value;
+    }
+    }
 
     private float _previousSpeed = 0;
     // Start is called before the first frame update
