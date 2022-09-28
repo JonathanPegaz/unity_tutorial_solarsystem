@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+
+    public delegate void InputEvent(string userAction);
+    public event InputEvent OnUserInput();
+
+    public delegate void InputSpecificEvent();
+    public event InputSpecificEvent OnUserPause();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +21,10 @@ public class InputController : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space)) {
-            if (GameController.Instance)
-                GameController.Instance.Pause();
+            this.OnUserPause.Invoke("pause");
+            this.OnUserPause.Invoke();
+            // if (GameController.Instance)
+            //     GameController.Instance.Pause();
         }
     }
 }
