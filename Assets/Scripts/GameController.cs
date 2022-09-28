@@ -6,8 +6,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance = null;
 
-    [Range(-2000, 2000)]
-    public float Speed = 100;
+    public float Speed { get; set; }
 
     private float _previousSpeed = 0;
     // Start is called before the first frame update
