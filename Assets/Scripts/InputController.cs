@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    public static InputController Instance = null;
 
     public delegate void InputEvent(string userAction);
     public event InputEvent OnUserInput();
@@ -14,7 +15,8 @@ public class InputController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(InputController.Instance == null)
+            InputController.Instance = this;
     }
 
     // Update is called once per frame
