@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+        
+        if(InputController.Instance)
+            InputController.Instance.OnUserPause += Pause;
     }
 
     // Update is called once per frame
