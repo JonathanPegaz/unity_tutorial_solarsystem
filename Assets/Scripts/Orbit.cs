@@ -8,7 +8,12 @@ public class Orbit : MonoBehaviour
     public PlanetOrbitPreset preset;
 
     [Tooltip("Child planet to move")]
-    public GameObject Planet;
+    private GameObject Planet;
+
+
+    void Start() {
+        this.Planet = GameObject.Instantiate(preset.PlanetPrefab, this.transform);    
+    }
     
     void Update() {
         this.Rotate();

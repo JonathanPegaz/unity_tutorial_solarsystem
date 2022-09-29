@@ -12,4 +12,6 @@ public class PlanetOrbitPreset : ScriptableObject
     [Range(0, 100000)]
     [Tooltip("Distance of the planet in Units")]
     public float OrbitRadius;
+
+    public GameObject PlanetPrefab;
 }
